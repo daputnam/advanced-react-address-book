@@ -1,19 +1,36 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
+import UserDetail from "./components/UserDetail.js"
+import ListOfUsers from "./components/ListOfUsers.js"
 
-function App() {
-  return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
+
+console.log("App.js");
+
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      
+
+    };
+  }
+
+ 
+  render() {
+
+    return (
+      <div className="App">
+
+        <ListOfUsers changeUser = {this.props.changeUser} users={this.props.users} />
+        <UserDetail user={this.props.currentUser} />
+        {/* <button onClick={() => {
+          this.setState({ visible: !this.state.visible });
+        }}>visible</button> */}
       </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-    </div>
-  );
+    )
+  }
 }
 
 export default App;

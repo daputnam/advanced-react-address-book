@@ -2,16 +2,17 @@
 * From address book directory, run yarn install, yarn start
 
 ### Do
-* Import the array of users into index.js
-* Create a folder in src called components to hold all our components
-* Create the UserDetail and ListOfUsers functional components
-* Import and use components in App
-* Send the user array into Apps and then into ListOfUsers
-* Send the first user from the array down into the UserDetail component
+Import the array of users into index.js
+Create a folder in src called components to hold all our components
+Create the UserDetail and ListOfUsers functional components
+Import and use components in App
+Send the user array into Apps and then into ListOfUsers
+Send the first user from the array down into the UserDetail component
 
 ### Do
-* Add a button to the ListOfUsers component that says Hide
-* Add an onClick to the button and a handler
+HOW???
+Add a button to the ListOfUsers component that says Hide
+Add an onClick to the button and a handler
 * Make clicking the button hide the list and change the text to “Show”
 * If you click it again it will show the list and change the text back to “Hide”
 
