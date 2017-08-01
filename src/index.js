@@ -11,7 +11,7 @@ function changeUser(user){
   render();
 }
 function searchUser(firstName){
-  // Use filter or something to search the array
+  // Use filter or something to search the array  
 }
 
 function render() {

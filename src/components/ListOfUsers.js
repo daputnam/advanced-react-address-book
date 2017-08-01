@@ -8,7 +8,7 @@ class ListOfUsers extends React.Component {
       buttonText: 'Hide',
       searchText: ''
     };
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   listButtonHandler() {
@@ -27,17 +27,27 @@ class ListOfUsers extends React.Component {
 
   }
 
-  handleChange(event) {
-    this.setState({searchText: event.target.value});
-  }
+  // handleChange(event) {
+  //   this.setState({searchText: event.target.value});
+  // }
 
   render() {
-    var userDiv = '';
+    var userDiv = [];
+    var filteredUsers = [];
     // var buttonText = 'Hide';
 
     //if not hidden
     if (!this.state.hidden) {
-      userDiv = this.props.users.map((user) => {
+      //filter the user data for seach
+      filteredUsers = this.props.users.filter((user) => {
+        if (this.state.searchText === "") {
+          return true;
+        } 
+        //return (user.last_name === this.state.searchText);
+        return user.last_name.indexOf(this.state.searchText) > -1;
+      });
+
+      userDiv = filteredUsers.map((user) => {
         return (
           <div key={user.first_name}>
             {user.first_name}-{user.last_name}
@@ -58,7 +68,7 @@ class ListOfUsers extends React.Component {
     return (
       <div>
         Here is the list of users:
-                <div id="list">{userDiv} </div>
+        <div id="list">{userDiv} </div>
 
         <button onClick={
           () => {
@@ -66,56 +76,17 @@ class ListOfUsers extends React.Component {
           }
         }>{this.state.buttonText}</button>
         <br />
-        <input type="text" value={this.state.searchText} onChange={this.handleChange } />
-        <button onClick={
-          () => {
-            this.props.changeUser(this.state.searchText);
-          }
-        }>Search</button>
+
+        Search<input onChange={
+          (e)=>{
+            // the entire text box value
+            this.setState({searchText: e.target.value});
+          } 
+        } />
+
       </div>
     )
   }
 }
 
 export default ListOfUsers;
-
-// import React from "react";
-
-// console.log("List.js");
-
-
-// class ListOfUsers extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             hidden: false
-//         };
-//     }
-//     listButtonHandler() {
-//         //if div id="list" hasclass hidden, remove the class
-//         // else addclass
-//         var listDiv = document.getElementById("list");
-//         listDiv.classList.toggle('hidden');
-//         this.setState({hidden:!this.state.hidden});
-//     }
-
-
-//     render() {
-//         const userDiv = this.props.users.map((user) => {
-//             return <div key={user.first_name}>{user.first_name}</div>
-//         });
-//         return (
-//             <div>
-//                 Here is the list of users:
-//             <div id="list">{userDiv} </div>
-//             {this.state.hidden ? <button onClick={this.listButtonHandler}>Show</button>
-//             : <button onClick={this.listButtonHandler}>Hide</button>}
-
-//             </div>
-//         )
-//     }
-
-// }
-
-// export default ListOfUsers;
-
